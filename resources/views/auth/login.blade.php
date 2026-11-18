@@ -3,10 +3,10 @@
 @section('title', 'Login Sistem Informasi 2A')
 
 @section('content')
-<div class="w-full max-w-md my-auto">
+<div class="w-full max-w-md my-auto px-2 sm:px-0">
     
     <!-- Cyber Card Wrapper -->
-    <div class="relative bg-slate-900/85 backdrop-blur-xl rounded-3xl border border-slate-800 shadow-2xl p-8 sm:p-10 text-white overflow-hidden ring-1 ring-white/10">
+    <div class="relative bg-slate-900/85 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-800 shadow-2xl p-5 sm:p-10 text-white overflow-hidden ring-1 ring-white/10">
         
         <!-- Glowing Cyan Neon Top Line -->
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 via-brand-500 to-indigo-500 shadow-lg shadow-cyan-500/50"></div>

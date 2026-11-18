@@ -3,18 +3,18 @@
 @section('title', 'Generate Laporan - Sistem Informasi 2A')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8">
 
     <!-- Header Section (no-print) -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 no-print">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-6 no-print">
         <div>
             <div class="flex items-center space-x-2">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
+                <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-brand-50 text-brand-700 border border-brand-200">
                     Administrasi Laporan
                 </span>
                 <span class="text-xs text-slate-400">Sistem Informasi 2A</span>
             </div>
-            <h1 class="text-2xl sm:text-3xl font-black text-slate-900 mt-1.5 tracking-tight">
+            <h1 class="text-xl sm:text-3xl font-black text-slate-900 mt-1 tracking-tight">
                 Generate & Ekspor Laporan
             </h1>
             <p class="text-xs sm:text-sm text-slate-500 mt-0.5">
@@ -22,23 +22,23 @@
             </p>
         </div>
 
-        <!-- Tombol Aksi Ekspor -->
+        <!-- Tombol Aksi Ekspor (Mobile Stack) -->
         @if($dataFound)
-        <div class="flex items-center space-x-2">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
             <!-- Cetak Browser -->
-            <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold shadow-sm transition flex items-center space-x-2">
+            <button type="button" onclick="window.print()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-extrabold shadow-sm transition flex items-center justify-center space-x-2 active:scale-95">
                 <i class="fa-solid fa-print"></i>
                 <span>Cetak Dokumen</span>
             </button>
 
             <!-- Export PDF -->
-            <button type="button" onclick="window.print()" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white text-xs font-extrabold shadow-md shadow-rose-500/20 transition flex items-center space-x-2">
+            <button type="button" onclick="window.print()" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white text-xs font-extrabold shadow-md shadow-rose-500/20 transition flex items-center justify-center space-x-2 active:scale-95">
                 <i class="fa-solid fa-file-pdf"></i>
                 <span>Export PDF</span>
             </button>
 
             <!-- Export Excel (.csv) -->
-            <a href="{{ route('laporan.export.excel', ['jenis' => $jenisLaporan, 'jabatan' => $filterJabatan]) }}" class="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-extrabold shadow-md shadow-emerald-500/20 transition flex items-center space-x-2">
+            <a href="{{ route('laporan.export.excel', ['jenis' => $jenisLaporan, 'jabatan' => $filterJabatan]) }}" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-extrabold shadow-md shadow-emerald-500/20 transition flex items-center justify-center space-x-2 active:scale-95">
                 <i class="fa-solid fa-file-excel"></i>
                 <span>Export Excel</span>
             </a>
@@ -47,15 +47,15 @@
     </div>
 
     <!-- Filter Form Card (no-print) -->
-    <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 mb-8 no-print">
-        <form action="{{ route('laporan.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-3 gap-5 items-end">
+    <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-sm p-4 sm:p-6 mb-6 sm:mb-8 no-print">
+        <form action="{{ route('laporan.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5 items-end">
             
             <!-- Jenis Laporan -->
             <div>
-                <label class="block text-xs font-black uppercase text-slate-700 tracking-wider mb-2">
+                <label class="block text-xs font-black uppercase text-slate-700 tracking-wider mb-1.5 sm:mb-2">
                     Jenis Laporan
                 </label>
-                <select name="jenis" onchange="this.form.submit()" class="w-full px-4 py-3 rounded-2xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-bold bg-slate-50/50">
+                <select name="jenis" onchange="this.form.submit()" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 font-bold bg-slate-50/50">
                     <option value="mahasiswa" {{ $jenisLaporan === 'mahasiswa' ? 'selected' : '' }}>Data Mahasiswa & Pengurus</option>
                     <option value="profil" {{ $jenisLaporan === 'profil' ? 'selected' : '' }}>Profil Resmi Kelas</option>
                 </select>
@@ -63,10 +63,10 @@
 
             <!-- Filter Jabatan -->
             <div>
-                <label class="block text-xs font-black uppercase text-slate-700 tracking-wider mb-2">
+                <label class="block text-xs font-black uppercase text-slate-700 tracking-wider mb-1.5 sm:mb-2">
                     Filter Jabatan
                 </label>
-                <select name="jabatan" {{ $jenisLaporan === 'profil' ? 'disabled' : '' }} onchange="this.form.submit()" class="w-full px-4 py-3 rounded-2xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-semibold bg-slate-50/50 disabled:bg-slate-100 disabled:text-slate-400">
+                <select name="jabatan" {{ $jenisLaporan === 'profil' ? 'disabled' : '' }} onchange="this.form.submit()" class="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl border border-slate-300 text-xs sm:text-sm focus:ring-2 focus:ring-brand-500 font-semibold bg-slate-50/50 disabled:bg-slate-100 disabled:text-slate-400">
                     <option value="semua" {{ $filterJabatan === 'semua' ? 'selected' : '' }}>Semua Mahasiswa (Seluruh Jabatan)</option>
                     <option value="pengurus" {{ $filterJabatan === 'pengurus' ? 'selected' : '' }}>Hanya Pengurus Inti</option>
                     <option value="Ketua Kelas" {{ $filterJabatan === 'Ketua Kelas' ? 'selected' : '' }}>Ketua Kelas</option>
@@ -78,7 +78,7 @@
             </div>
 
             <div>
-                <button type="submit" class="w-full py-3 px-5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-sm transition">
+                <button type="submit" class="w-full py-2.5 sm:py-3 px-5 rounded-xl sm:rounded-2xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs shadow-sm transition">
                     Terapkan Filter Laporan
                 </button>
             </div>
@@ -99,26 +99,26 @@
     <!-- PRATINJAU LAPORAN -->
     @if(!$dataFound)
         <!-- EMPTY STATE LAPORAN: Tidak ada data untuk dilaporkan -->
-        <div class="bg-white rounded-3xl border border-slate-200 p-12 text-center shadow-xs">
-            <div class="w-16 h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-2xl mx-auto mb-3">
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-6 sm:p-12 text-center shadow-xs">
+            <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl sm:text-2xl mx-auto mb-3">
                 <i class="fa-solid fa-file-circle-xmark"></i>
             </div>
-            <h3 class="text-lg font-black text-slate-800">Tidak ada data untuk dilaporkan</h3>
+            <h3 class="text-base sm:text-lg font-black text-slate-800">Tidak ada data untuk dilaporkan</h3>
             <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                 Kriteria filter jabatan yang dipilih tidak menemukan data mahasiswa yang sesuai dalam basis data kelas.
             </p>
         </div>
     @else
         <!-- TABEL PRATINJAU LAPORAN -->
-        <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden p-6 sm:p-8">
-            <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+        <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden p-4 sm:p-8">
+            <div class="flex items-center justify-between pb-3 sm:pb-4 border-b border-slate-100 mb-4 sm:mb-6">
                 <div>
                     <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Pratinjau Dokumen Cetak:</span>
-                    <h2 class="text-lg font-black text-slate-900 mt-0.5">
+                    <h2 class="text-sm sm:text-lg font-black text-slate-900 mt-0.5 leading-snug">
                         {{ $jenisLaporan === 'profil' ? 'Laporan Profil Kelas Sistem Informasi 2A' : 'Laporan Daftar & Struktur Mahasiswa' }}
                     </h2>
                 </div>
-                <span class="text-xs font-mono text-slate-400">Tanggal: {{ date('d F Y') }}</span>
+                <span class="text-[10px] sm:text-xs font-mono text-slate-400 flex-shrink-0 ml-2">Tanggal: {{ date('d F Y') }}</span>
             </div>
 
             @if($jenisLaporan === 'profil')

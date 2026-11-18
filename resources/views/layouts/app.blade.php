@@ -82,19 +82,20 @@
         }
     </style>
 </head>
-<body class="h-full text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex">
+<body class="h-full text-slate-800 antialiased selection:bg-brand-500 selection:text-white flex overflow-x-hidden min-w-0">
 
     @if(session()->has('auth_user'))
         <!-- BACKDROP MOBILE SIDEBAR OVERLAY -->
-        <div id="sidebar-overlay" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-40 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
+        <div id="sidebar-overlay" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-40 hidden md:hidden transition-opacity" onclick="toggleSidebar()"></div>
 
         <!-- MODERN CYBER-SLATE SIDEBAR -->
-        <aside id="main-sidebar" class="fixed inset-y-0 left-0 z-50 w-64 lg:w-72 bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 border-r border-slate-800/80 text-slate-300 flex flex-col justify-between transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl no-print">
+        <aside id="main-sidebar" class="fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-gradient-to-b from-slate-950 via-slate-900 to-indigo-950 border-r border-slate-800/80 text-slate-300 flex flex-col justify-between transition-transform duration-300 -translate-x-full md:translate-x-0 shadow-2xl no-print overflow-hidden">
             
-            <div class="flex flex-col">
+            <!-- Top Part of Sidebar (Header + User Profile) -->
+            <div class="flex-shrink-0">
                 <!-- Sidebar Header: Brand Logo & Title -->
                 <div class="h-20 px-5 flex items-center justify-between border-b border-slate-800/80 bg-slate-950/40">
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group min-w-0">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group min-w-0" onclick="if(window.innerWidth < 768) toggleSidebar();">
                         <div class="relative flex-shrink-0">
                             <img src="{{ asset('images/logo-si2a.png') }}" 
                                  alt="Logo Sistem Informasi 2A" 
@@ -111,14 +112,14 @@
                         </div>
                     </a>
 
-                    <!-- Mobile Close -->
-                    <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition">
+                    <!-- Mobile Close Button -->
+                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/60 transition active:scale-95" aria-label="Tutup Menu">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>
 
                 <!-- User Profile Card in Sidebar -->
-                <div class="p-3.5 mx-3.5 my-4 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-inner flex items-center space-x-3">
+                <div class="p-3.5 mx-3.5 my-3.5 rounded-2xl bg-slate-900/80 border border-slate-800/90 shadow-inner flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-xl {{ session('auth_user.role') === 'admin' ? 'bg-gradient-to-tr from-rose-600 to-amber-500 text-white' : 'bg-gradient-to-tr from-brand-600 to-emerald-500 text-white' }} flex items-center justify-center text-sm font-black flex-shrink-0 shadow-md">
                         <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-shield-halved' : 'fa-user-graduate' }}"></i>
                     </div>
@@ -136,72 +137,72 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Sidebar Navigation Menu -->
-                <div class="px-3 space-y-6 overflow-y-auto">
-                    
-                    <!-- Kategori: Menu Utama -->
-                    <div>
-                        <span class="px-3 text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">
-                            Menu Utama
-                        </span>
-                        <nav class="space-y-1.5">
-                            
-                            <!-- Dashboard -->
-                            <a href="{{ route('dashboard') }}" 
-                               class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
-                                <i class="fa-solid fa-chart-pie w-5 text-center text-sm {{ request()->routeIs('dashboard') ? 'text-white' : 'text-slate-400 group-hover:text-white' }}"></i>
-                                <span>Dashboard</span>
-                            </a>
+            <!-- Scrollable Middle Part: Nav Items -->
+            <div class="flex-1 overflow-y-auto px-3 py-2 space-y-5">
+                
+                <!-- Kategori: Menu Utama -->
+                <div>
+                    <span class="px-3 text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">
+                        Menu Utama
+                    </span>
+                    <nav class="space-y-1.5">
+                        
+                        <!-- Dashboard -->
+                        <a href="{{ route('dashboard') }}" 
+                           class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('dashboard') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                            <i class="fa-solid fa-chart-pie w-5 text-center text-sm {{ request()->routeIs('dashboard') ? 'text-white' : 'text-slate-400 group-hover:text-white' }}"></i>
+                            <span>Dashboard</span>
+                        </a>
 
-                            <!-- Profil Kelas -->
-                            <a href="{{ route('profil.index') }}" 
-                               class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('profil.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
-                                <i class="fa-solid fa-id-card w-5 text-center text-sm {{ request()->routeIs('profil.*') ? 'text-white' : 'text-slate-400' }}"></i>
-                                <span>Profil Kelas</span>
-                            </a>
+                        <!-- Profil Kelas -->
+                        <a href="{{ route('profil.index') }}" 
+                           class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('profil.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                            <i class="fa-solid fa-id-card w-5 text-center text-sm {{ request()->routeIs('profil.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                            <span>Profil Kelas</span>
+                        </a>
 
-                            <!-- Data Mahasiswa -->
-                            <a href="{{ route('mahasiswa.index') }}" 
-                               class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('mahasiswa.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
-                                <i class="fa-solid fa-users w-5 text-center text-sm {{ request()->routeIs('mahasiswa.*') ? 'text-white' : 'text-slate-400' }}"></i>
-                                <span>Data Mahasiswa</span>
-                            </a>
+                        <!-- Data Mahasiswa -->
+                        <a href="{{ route('mahasiswa.index') }}" 
+                           class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('mahasiswa.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                            <i class="fa-solid fa-users w-5 text-center text-sm {{ request()->routeIs('mahasiswa.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                            <span>Data Mahasiswa</span>
+                        </a>
 
-                            <!-- Struktur Kelas -->
-                            <a href="{{ route('struktur.index') }}" 
-                               class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('struktur.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
-                                <i class="fa-solid fa-sitemap w-5 text-center text-sm {{ request()->routeIs('struktur.*') ? 'text-white' : 'text-slate-400' }}"></i>
-                                <span>Struktur Organisasi</span>
-                            </a>
+                        <!-- Struktur Kelas -->
+                        <a href="{{ route('struktur.index') }}" 
+                           class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('struktur.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                            <i class="fa-solid fa-sitemap w-5 text-center text-sm {{ request()->routeIs('struktur.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                            <span>Struktur Organisasi</span>
+                        </a>
 
-                        </nav>
-                    </div>
-
-                    <!-- Kategori: Laporan & Dokumen -->
-                    <div>
-                        <span class="px-3 text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">
-                            Laporan & Administrasi
-                        </span>
-                        <nav class="space-y-1.5">
-                            
-                            <!-- Generate Laporan -->
-                            <a href="{{ route('laporan.index') }}" 
-                               class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('laporan.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
-                                <i class="fa-solid fa-file-lines w-5 text-center text-sm {{ request()->routeIs('laporan.*') ? 'text-white' : 'text-slate-400' }}"></i>
-                                <span>Generate Laporan</span>
-                            </a>
-
-                        </nav>
-                    </div>
-
+                    </nav>
                 </div>
+
+                <!-- Kategori: Laporan & Dokumen -->
+                <div>
+                    <span class="px-3 text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-2">
+                        Laporan & Administrasi
+                    </span>
+                    <nav class="space-y-1.5">
+                        
+                        <!-- Generate Laporan -->
+                        <a href="{{ route('laporan.index') }}" 
+                           class="flex items-center space-x-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-200 {{ request()->routeIs('laporan.*') ? 'bg-gradient-to-r from-brand-600 to-indigo-600 text-white shadow-lg shadow-brand-500/25 ring-1 ring-white/20' : 'text-slate-400 hover:text-white hover:bg-slate-800/60' }}">
+                            <i class="fa-solid fa-file-lines w-5 text-center text-sm {{ request()->routeIs('laporan.*') ? 'text-white' : 'text-slate-400' }}"></i>
+                            <span>Generate Laporan</span>
+                        </a>
+
+                    </nav>
+                </div>
+
             </div>
 
             <!-- Sidebar Bottom: Logout -->
-            <div class="p-4 border-t border-slate-800/80 bg-slate-950/60">
+            <div class="flex-shrink-0 p-4 border-t border-slate-800/80 bg-slate-950/60">
                 <a href="{{ route('logout') }}" 
-                   class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-rose-950/70 border border-slate-800 hover:border-rose-800/60 text-slate-300 hover:text-rose-300 text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-sm">
+                   class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-rose-950/70 border border-slate-800 hover:border-rose-800/60 text-slate-300 hover:text-rose-300 text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-sm active:scale-95">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Keluar dari Sistem</span>
                 </a>
@@ -210,31 +211,31 @@
         </aside>
 
         <!-- MAIN CONTENT WRAPPER -->
-        <div class="flex-1 flex flex-col min-h-screen md:pl-64 lg:pl-72 main-content-wrapper">
+        <div class="flex-1 flex flex-col min-h-screen md:pl-64 lg:pl-72 main-content-wrapper w-full max-w-full overflow-x-hidden">
             
             <!-- Top App Bar / Header -->
-            <header class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-6 lg:px-8 flex items-center justify-between sticky top-0 z-30 shadow-xs no-print">
-                <div class="flex items-center space-x-3">
+            <header class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-3 sm:px-6 lg:px-8 flex items-center justify-between sticky top-0 z-30 shadow-xs no-print">
+                <div class="flex items-center space-x-2.5 sm:space-x-3 min-w-0">
                     <!-- Mobile Hamburger -->
-                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none transition" aria-label="Toggle Sidebar">
+                    <button type="button" onclick="toggleSidebar()" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none transition active:scale-95 flex-shrink-0" aria-label="Toggle Sidebar">
                         <i class="fa-solid fa-bars text-lg"></i>
                     </button>
-                    <div>
-                        <h2 class="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight">
+                    <div class="min-w-0">
+                        <h2 class="text-xs sm:text-sm font-extrabold text-slate-900 leading-tight truncate">
                             Politeknik Negeri Subang
                         </h2>
-                        <span class="text-[11px] font-medium text-slate-500">
-                            Kelas Sistem Informasi 2A • D-III Sistem Informasi
+                        <span class="text-[10px] sm:text-[11px] font-medium text-slate-500 block truncate">
+                            Kelas Sistem Informasi 2A • D-III SI
                         </span>
                     </div>
                 </div>
 
-                <div class="flex items-center space-x-3">
-                    <span class="hidden sm:inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-black {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} shadow-xs">
-                        <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-shield-halved' : 'fa-user-graduate' }} mr-1.5 {{ session('auth_user.role') === 'admin' ? 'text-rose-600' : 'text-brand-600' }}"></i>
+                <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+                    <span class="inline-flex items-center px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-black {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} shadow-xs">
+                        <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-shield-halved' : 'fa-user-graduate' }} mr-1 sm:mr-1.5 {{ session('auth_user.role') === 'admin' ? 'text-rose-600' : 'text-brand-600' }}"></i>
                         <span>{{ session('auth_user.role') === 'admin' ? 'Administrator' : 'Mahasiswa' }}</span>
                     </span>
-                    <div class="w-9 h-9 rounded-xl {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} flex items-center justify-center text-xs font-black shadow-xs" title="{{ session('auth_user.name') }}">
+                    <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} flex items-center justify-center text-xs font-black shadow-xs flex-shrink-0" title="{{ session('auth_user.name') }}">
                         <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-user-shield' : 'fa-user-graduate' }}"></i>
                     </div>
                 </div>
@@ -324,9 +325,11 @@
                 if (isOpen) {
                     sidebar.classList.add('-translate-x-full');
                     overlay.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
                 } else {
                     sidebar.classList.remove('-translate-x-full');
                     overlay.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
                 }
             }
         }
