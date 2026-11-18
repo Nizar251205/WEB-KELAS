@@ -17,8 +17,8 @@ class ClassStructureTest extends TestCase
 
     public function test_assign_role_success_when_allowed()
     {
-        // Mahasiswa 5 (Budi) diberi jabatan "Anggota" (diizinkan banyak)
-        $result = ClassDataService::assignRole(5, 'Anggota');
+        // Mahasiswa 2 (Aulia) diberi jabatan "Wakil Ketua Kelas" (belum ada yang pegang)
+        $result = ClassDataService::assignRole(2, 'Wakil Ketua Kelas');
         $this->assertTrue($result['success']);
     }
 

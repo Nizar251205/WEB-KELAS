@@ -18,22 +18,24 @@ class ClassDataService
     {
         return [
             'profile' => [
-                'nama_kelas' => 'SI2A',
+                'nama_kelas' => 'Sistem Informasi 2A',
                 'prodi' => 'D-III Sistem Informasi',
                 'jurusan' => 'Jurusan Teknologi Informasi dan Komputer',
                 'institusi' => 'Politeknik Negeri Subang',
                 'angkatan' => '2026',
                 'mata_kuliah' => 'Pemrograman Website [PSI3310]',
                 'dosen_wali' => 'Rahmat Irsyada, M.Pd. & Usep Abdul Rosid, M.Kom.',
-                'deskripsi' => 'Kelas SI2A Program Studi D-III Sistem Informasi, Jurusan Teknologi Informasi dan Komputer, Politeknik Negeri Subang. Wadah pembelajaran kolaboratif yang fokus pada pengembangan sistem website modern berstandar industri.',
+                'deskripsi' => 'Kelas Sistem Informasi 2A (SI2A) merupakan wadah pembelajaran kolaboratif Program Studi D-III Sistem Informasi, Jurusan Teknologi Informasi dan Komputer di Politeknik Negeri Subang. Berfokus pada pengembangan rekayasa web, teknologi basis data, dan kepemimpinan organisasi digital.',
                 'kelompok' => 'Kelompok 4'
             ],
+            // Data awal dibuat minimal (hanya anggota inisiator) dan beberapa posisi jabatan sengaja dibiarkan "Belum ditentukan"
+            // agar pengguna/dosen dapat langsung menguji fitur Atur Jabatan & Tambah Mahasiswa
             'mahasiswa' => [
                 [
                     'id' => 1,
                     'nim' => '10112001',
                     'nama' => 'Aakip Hasan Mutakin',
-                    'kelas' => 'SI2A',
+                    'kelas' => 'Sistem Informasi 2A',
                     'jabatan' => 'Ketua Kelas',
                     'email' => 'aakip.10112001@mhs.polsub.ac.id',
                     'no_hp' => '0812-3456-7801',
@@ -43,8 +45,8 @@ class ClassDataService
                     'id' => 2,
                     'nim' => '10112016',
                     'nama' => 'Aulia Putri Ramadhina',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Wakil Ketua Kelas',
+                    'kelas' => 'Sistem Informasi 2A',
+                    'jabatan' => 'Anggota',
                     'email' => 'aulia.10112016@mhs.polsub.ac.id',
                     'no_hp' => '0812-3456-7802',
                     'gender' => 'Perempuan'
@@ -53,8 +55,8 @@ class ClassDataService
                     'id' => 3,
                     'nim' => '10112022',
                     'nama' => 'Dealova Frazelia Setiawan',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Sekretaris',
+                    'kelas' => 'Sistem Informasi 2A',
+                    'jabatan' => 'Anggota',
                     'email' => 'dealova.10112022@mhs.polsub.ac.id',
                     'no_hp' => '0812-3456-7803',
                     'gender' => 'Perempuan'
@@ -63,71 +65,11 @@ class ClassDataService
                     'id' => 4,
                     'nim' => '10112049',
                     'nama' => 'Muhammad Nizar Zulhaqy',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Bendahara',
+                    'kelas' => 'Sistem Informasi 2A',
+                    'jabatan' => 'Anggota',
                     'email' => 'nizar.10112049@mhs.polsub.ac.id',
                     'no_hp' => '0812-3456-7804',
                     'gender' => 'Laki-laki'
-                ],
-                [
-                    'id' => 5,
-                    'nim' => '10112005',
-                    'nama' => 'Budi Santoso',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'budi.10112005@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7805',
-                    'gender' => 'Laki-laki'
-                ],
-                [
-                    'id' => 6,
-                    'nim' => '10112008',
-                    'nama' => 'Citra Lestari',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'citra.10112008@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7806',
-                    'gender' => 'Perempuan'
-                ],
-                [
-                    'id' => 7,
-                    'nim' => '10112012',
-                    'nama' => 'Dimas Pratama',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'dimas.10112012@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7807',
-                    'gender' => 'Laki-laki'
-                ],
-                [
-                    'id' => 8,
-                    'nim' => '10112018',
-                    'nama' => 'Farhan Kurniawan',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'farhan.10112018@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7808',
-                    'gender' => 'Laki-laki'
-                ],
-                [
-                    'id' => 9,
-                    'nim' => '10112025',
-                    'nama' => 'Gita Gutawa',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'gita.10112025@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7809',
-                    'gender' => 'Perempuan'
-                ],
-                [
-                    'id' => 10,
-                    'nim' => '10112030',
-                    'nama' => 'Indah Permatasari',
-                    'kelas' => 'SI2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'indah.10112030@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7810',
-                    'gender' => 'Perempuan'
                 ]
             ]
         ];
@@ -148,13 +90,6 @@ class ClassDataService
             $default = self::getDefaultData();
             self::saveData($default);
             return $default;
-        }
-
-        // Jika mahasiswa kosong, isi dengan mahasiswa default SI2A
-        if (empty($data['mahasiswa'])) {
-            $default = self::getDefaultData();
-            $data['mahasiswa'] = $default['mahasiswa'];
-            self::saveData($data);
         }
 
         return $data;
@@ -197,7 +132,7 @@ class ClassDataService
         return $data['profile'];
     }
 
-    // --- MAHASISWA ---
+    // --- DATA MAHASISWA ---
     public static function getStudents($search = null)
     {
         $data = self::loadData();
@@ -239,7 +174,7 @@ class ClassDataService
             'id' => $newId,
             'nim' => trim($fields['nim'] ?? ''),
             'nama' => trim($fields['nama'] ?? ''),
-            'kelas' => trim($fields['kelas'] ?? ($data['profile']['nama_kelas'] ?? 'SI2A')),
+            'kelas' => trim($fields['kelas'] ?? ($data['profile']['nama_kelas'] ?? 'Sistem Informasi 2A')),
             'jabatan' => trim($fields['jabatan'] ?? 'Anggota'),
             'email' => trim($fields['email'] ?? ''),
             'no_hp' => trim($fields['no_hp'] ?? ''),
@@ -298,7 +233,7 @@ class ClassDataService
         $data = self::loadData();
         $singleRoles = ['Ketua Kelas', 'Wakil Ketua Kelas', 'Sekretaris', 'Bendahara'];
 
-        // Cek apakah jabatan tunggal sudah dipegang orang lain
+        // Cek jika jabatan tunggal sudah dipegang orang lain
         if (in_array($newRole, $singleRoles)) {
             foreach ($data['mahasiswa'] as $s) {
                 if ($s['jabatan'] === $newRole && $s['id'] != $studentId) {
@@ -336,7 +271,7 @@ class ClassDataService
         ];
     }
 
-    // --- STRUKTUR JABATAN ---
+    // --- STRUKTUR JABATAN ORGANISASI ---
     public static function getStructure()
     {
         $data = self::loadData();
