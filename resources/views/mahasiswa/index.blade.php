@@ -196,9 +196,21 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="6" class="py-12 text-center text-slate-400 text-sm">
-                            <i class="fa-solid fa-folder-open text-3xl block mb-2 opacity-40"></i>
-                            Belum ada data mahasiswa yang terdaftar di sistem.
+                        <td colspan="6" class="py-14 text-center text-slate-400">
+                            <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center text-2xl mx-auto mb-3">
+                                <i class="fa-solid fa-user-graduate"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-slate-700">Belum ada data mahasiswa</h4>
+                            <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+                                Direktori mahasiswa saat ini masih kosong. Silakan gunakan tombol di bawah untuk mendaftarkan mahasiswa baru.
+                            </p>
+                            @if($isAdmin)
+                            <div class="mt-4">
+                                <button type="button" onclick="openModal('modal-add-mhs')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold text-xs shadow-md shadow-brand-500/20 hover:from-brand-500 hover:to-indigo-500 transition">
+                                    <i class="fa-solid fa-user-plus mr-1"></i> Tambah Mahasiswa Sekarang
+                                </button>
+                            </div>
+                            @endif
                         </td>
                     </tr>
                     @endforelse

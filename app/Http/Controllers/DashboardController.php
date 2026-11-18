@@ -17,33 +17,17 @@ class DashboardController extends Controller
 
         $dataAvailable = !empty($students) || !empty($profile);
 
-        if (!$dataAvailable) {
-            return view('dashboard', [
-                'dataAvailable' => false,
-                'totalMahasiswa' => 0,
-                'totalPengurus' => 0,
-                'totalKelas' => 0,
-                'maleCount' => 0,
-                'femaleCount' => 0,
-                'malePercent' => 0,
-                'femalePercent' => 0,
-                'profile' => null,
-                'officers' => [],
-                'recentStudents' => []
-            ]);
-        }
-
         // Hitung jumlah mahasiswa
         $totalMahasiswa = count($students);
 
         // Hitung jumlah pengurus (selain 'Anggota')
         $officers = array_filter($students, function ($s) {
-            return !in_array($s['jabatan'], ['Anggota', '', null]);
+            return !in_array($s['jabatan'] ?? '', ['Anggota', '', null]);
         });
         $totalPengurus = count($officers);
 
-        // Jumlah kelas
-        $totalKelas = 1;
+        // Jumlah kelas aktif
+        $totalKelas = !empty($profile['nama_kelas']) ? 1 : 0;
 
         // Komposisi Gender
         $maleCount = 0;
@@ -61,7 +45,7 @@ class DashboardController extends Controller
         $femalePercent = $totalMahasiswa > 0 ? round(($femaleCount / $totalMahasiswa) * 100, 1) : 0;
 
         return view('dashboard', [
-            'dataAvailable' => true,
+            'dataAvailable' => $dataAvailable,
             'totalMahasiswa' => $totalMahasiswa,
             'totalPengurus' => $totalPengurus,
             'totalKelas' => $totalKelas,

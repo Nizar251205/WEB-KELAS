@@ -105,14 +105,21 @@
                             <i class="fa-regular fa-envelope mr-1"></i> {{ $structure['Ketua Kelas']['email'] }}
                         </div>
                     @else
-                        <!-- Posisi Kosong -->
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold uppercase bg-slate-100 text-slate-500 mb-3">
-                            Ketua Kelas
+                        <!-- Posisi Kosong: Belum ditentukan -->
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-black uppercase bg-amber-100 text-amber-800 border border-amber-200 mb-3">
+                            <i class="fa-solid fa-crown mr-1.5 text-amber-600"></i> Ketua Kelas
                         </span>
                         <div class="py-6">
-                            <i class="fa-solid fa-user-slash text-slate-300 text-3xl mb-2 block"></i>
-                            <h4 class="text-sm font-bold text-rose-500 italic">Belum ditentukan</h4>
-                            <p class="text-xs text-slate-400 mt-1">Jabatan belum diisi</p>
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-lg mx-auto mb-2">
+                                <i class="fa-solid fa-user-plus"></i>
+                            </div>
+                            <h4 class="text-sm font-bold text-amber-800 italic">Belum ditentukan</h4>
+                            <p class="text-xs text-amber-600 mt-0.5">Dapat ditetapkan oleh admin</p>
+                            @if($isAdmin)
+                            <button type="button" onclick="openAturPosisi('Ketua Kelas')" class="mt-3 px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition shadow-xs">
+                                + Tetapkan Pengurus
+                            </button>
+                            @endif
                         </div>
                     @endif
                 </div>
@@ -271,12 +278,19 @@
                 <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Mahasiswa</label>
                 <select name="mahasiswa_id" id="modal-select-mahasiswa" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-medium">
                     <option value="" disabled selected>-- Pilih Mahasiswa --</option>
-                    @foreach($allStudents as $std)
+                    @forelse($allStudents as $std)
                         <option value="{{ $std['id'] }}">
                             {{ $std['nim'] }} - {{ $std['nama'] }} (Saat ini: {{ $std['jabatan'] }})
                         </option>
-                    @endforeach
+                    @empty
+                        <option value="" disabled>-- Belum ada mahasiswa terdaftar --</option>
+                    @endforelse
                 </select>
+                @if(empty($allStudents))
+                <p class="text-[11px] text-amber-600 mt-1">
+                    <i class="fa-solid fa-triangle-exclamation mr-1"></i> Data mahasiswa masih kosong. Silakan tambahkan data di menu <strong>Mahasiswa</strong> terlebih dahulu.
+                </p>
+                @endif
             </div>
 
             <div>

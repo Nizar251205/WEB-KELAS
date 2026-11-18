@@ -14,65 +14,37 @@ class ClassDataService
         return self::$filePath;
     }
 
+    public static function getDefaultProfile()
+    {
+        return [
+            'nama_kelas' => 'Sistem Informasi 2A',
+            'prodi' => 'D-III Sistem Informasi',
+            'jurusan' => 'Jurusan Teknologi Informasi dan Komputer',
+            'institusi' => 'Politeknik Negeri Subang',
+            'angkatan' => '2026',
+            'mata_kuliah' => 'Pemrograman Website [PSI3310]',
+            'dosen_wali' => 'Rahmat Irsyada, M.Pd. & Usep Abdul Rosid, M.Kom.',
+            'deskripsi' => 'Kelas Sistem Informasi 2A (SI2A) merupakan wadah pembelajaran kolaboratif Program Studi D-III Sistem Informasi, Jurusan Teknologi Informasi dan Komputer di Politeknik Negeri Subang. Berfokus pada pengembangan rekayasa web, teknologi basis data, dan kepemimpinan organisasi digital.',
+            'kelompok' => 'Kelompok 4'
+        ];
+    }
+
     public static function getDefaultData()
     {
         return [
-            'profile' => [
-                'nama_kelas' => 'Sistem Informasi 2A',
-                'prodi' => 'D-III Sistem Informasi',
-                'jurusan' => 'Jurusan Teknologi Informasi dan Komputer',
-                'institusi' => 'Politeknik Negeri Subang',
-                'angkatan' => '2026',
-                'mata_kuliah' => 'Pemrograman Website [PSI3310]',
-                'dosen_wali' => 'Rahmat Irsyada, M.Pd. & Usep Abdul Rosid, M.Kom.',
-                'deskripsi' => 'Kelas Sistem Informasi 2A (SI2A) merupakan wadah pembelajaran kolaboratif Program Studi D-III Sistem Informasi, Jurusan Teknologi Informasi dan Komputer di Politeknik Negeri Subang. Berfokus pada pengembangan rekayasa web, teknologi basis data, dan kepemimpinan organisasi digital.',
-                'kelompok' => 'Kelompok 4'
-            ],
-            // Data awal dibuat minimal (hanya anggota inisiator) dan beberapa posisi jabatan sengaja dibiarkan "Belum ditentukan"
-            // agar pengguna/dosen dapat langsung menguji fitur Atur Jabatan & Tambah Mahasiswa
-            'mahasiswa' => [
-                [
-                    'id' => 1,
-                    'nim' => '10112001',
-                    'nama' => 'Aakip Hasan Mutakin',
-                    'kelas' => 'Sistem Informasi 2A',
-                    'jabatan' => 'Ketua Kelas',
-                    'email' => 'aakip.10112001@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7801',
-                    'gender' => 'Laki-laki'
-                ],
-                [
-                    'id' => 2,
-                    'nim' => '10112016',
-                    'nama' => 'Aulia Putri Ramadhina',
-                    'kelas' => 'Sistem Informasi 2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'aulia.10112016@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7802',
-                    'gender' => 'Perempuan'
-                ],
-                [
-                    'id' => 3,
-                    'nim' => '10112022',
-                    'nama' => 'Dealova Frazelia Setiawan',
-                    'kelas' => 'Sistem Informasi 2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'dealova.10112022@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7803',
-                    'gender' => 'Perempuan'
-                ],
-                [
-                    'id' => 4,
-                    'nim' => '10112049',
-                    'nama' => 'Muhammad Nizar Zulhaqy',
-                    'kelas' => 'Sistem Informasi 2A',
-                    'jabatan' => 'Anggota',
-                    'email' => 'nizar.10112049@mhs.polsub.ac.id',
-                    'no_hp' => '0812-3456-7804',
-                    'gender' => 'Laki-laki'
-                ]
-            ]
+            'profile' => null,
+            'mahasiswa' => []
         ];
+    }
+
+    public static function clearAllData()
+    {
+        $empty = [
+            'profile' => null,
+            'mahasiswa' => []
+        ];
+        self::saveData($empty);
+        return $empty;
     }
 
     public static function loadData()
@@ -86,10 +58,17 @@ class ClassDataService
 
         $content = file_get_contents($path);
         $data = json_decode($content, true);
-        if (!$data || !is_array($data)) {
+        if (!is_array($data)) {
             $default = self::getDefaultData();
             self::saveData($default);
             return $default;
+        }
+
+        if (!array_key_exists('profile', $data)) {
+            $data['profile'] = null;
+        }
+        if (!array_key_exists('mahasiswa', $data) || !is_array($data['mahasiswa'])) {
+            $data['mahasiswa'] = [];
         }
 
         return $data;
@@ -126,8 +105,7 @@ class ClassDataService
     public static function resetProfile()
     {
         $data = self::loadData();
-        $default = self::getDefaultData();
-        $data['profile'] = $default['profile'];
+        $data['profile'] = self::getDefaultProfile();
         self::saveData($data);
         return $data['profile'];
     }
