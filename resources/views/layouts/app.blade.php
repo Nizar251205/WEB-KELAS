@@ -72,26 +72,20 @@
             <!-- Sidebar Top: Brand & User Profile -->
             <div class="flex flex-col">
                 <!-- Brand Header -->
-                <div class="h-20 px-6 flex items-center justify-between border-b border-slate-100">
-                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-indigo-600 flex items-center justify-center text-white font-black text-lg shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
-                            <i class="fa-solid fa-graduation-cap"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center space-x-1.5">
-                                <span class="font-extrabold text-slate-900 text-lg leading-tight group-hover:text-brand-600 transition-colors">
-                                    SI2A
-                                </span>
-                                <span class="text-[10px] font-bold px-1.5 py-0.2 rounded bg-brand-100 text-brand-800">POLSUB</span>
-                            </div>
-                            <span class="block text-[11px] font-medium text-slate-400">
-                                Sistem Struktur Kelas
+                <div class="h-20 px-5 flex items-center justify-between border-b border-slate-100">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group min-w-0">
+                        <img src="{{ asset('images/logo-si2a.png') }}" 
+                             alt="Logo Sistem Informasi 2A" 
+                             class="w-11 h-11 rounded-xl object-cover shadow-md border border-slate-200/80 group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
+                        <div class="min-w-0 flex-grow">
+                            <span class="font-extrabold text-slate-900 text-sm sm:text-base leading-tight group-hover:text-brand-600 transition-colors block truncate">
+                                Sistem Informasi 2A
                             </span>
                         </div>
                     </a>
 
                     <!-- Close button on mobile -->
-                    <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100">
+                    <button onclick="toggleSidebar()" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100 flex-shrink-0">
                         <i class="fa-solid fa-xmark text-lg"></i>
                     </button>
                 </div>

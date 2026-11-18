@@ -150,6 +150,13 @@ class ClassDataService
             return $default;
         }
 
+        // Jika mahasiswa kosong, isi dengan mahasiswa default SI2A
+        if (empty($data['mahasiswa'])) {
+            $default = self::getDefaultData();
+            $data['mahasiswa'] = $default['mahasiswa'];
+            self::saveData($data);
+        }
+
         return $data;
     }
 

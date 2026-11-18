@@ -10,11 +10,11 @@
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-brand-600 via-indigo-600 to-blue-500"></div>
 
         <div class="text-center mb-8">
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-700 to-indigo-600 text-white flex items-center justify-center text-2xl mx-auto shadow-lg shadow-brand-500/25 mb-4">
-                <i class="fa-solid fa-graduation-cap"></i>
-            </div>
-            <h1 class="text-2xl font-black text-slate-900 tracking-tight">Sistem Informasi Kelas</h1>
-            <p class="text-xs text-slate-500 mt-1">SI2A • Politeknik Negeri Subang</p>
+            <img src="{{ asset('images/logo-si2a.png') }}" 
+                 alt="Logo Sistem Informasi 2A" 
+                 class="w-20 h-20 rounded-2xl mx-auto shadow-lg object-cover mb-4 border-2 border-slate-100">
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight">Sistem Informasi 2A</h1>
+            <p class="text-xs text-slate-500 mt-1">Politeknik Negeri Subang</p>
         </div>
 
         <!-- Form Login (Activity Diagram Page 2) -->
