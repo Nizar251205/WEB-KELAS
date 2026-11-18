@@ -70,7 +70,7 @@
             <div class="flex items-center justify-between h-16">
                 
                 <!-- Brand / Logo -->
-                <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 group">
+                <a href="{{ session()->has('auth_user') ? route('dashboard') : route('login') }}" class="flex items-center space-x-3 group">
                     <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-700 to-indigo-600 flex items-center justify-center text-white font-extrabold text-lg shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform duration-200">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
@@ -87,7 +87,8 @@
                     </div>
                 </a>
 
-                <!-- Desktop Navigation Links -->
+                @if(session()->has('auth_user'))
+                <!-- Desktop Navigation Links (Hanya muncul jika sudah login) -->
                 <nav class="hidden md:flex items-center space-x-1">
                     <a href="{{ route('dashboard') }}" 
                        class="px-3.5 py-2 rounded-lg text-sm font-semibold transition-all duration-150 flex items-center space-x-1.5 {{ request()->routeIs('dashboard') ? 'bg-brand-50 text-brand-700 shadow-sm' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100' }}">
@@ -122,30 +123,23 @@
 
                 <!-- Auth / User Info -->
                 <div class="hidden md:flex items-center space-x-3">
-                    @if(session()->has('auth_user'))
-                        <div class="flex items-center space-x-2 pl-2 border-l border-slate-200">
-                            <span class="w-8 h-8 rounded-full {{ session('auth_user.role') === 'admin' ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700' }} flex items-center justify-center text-xs font-extrabold shadow-sm">
-                                <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-user-shield' : 'fa-user-graduate' }}"></i>
+                    <div class="flex items-center space-x-2 pl-2 border-l border-slate-200">
+                        <span class="w-8 h-8 rounded-full {{ session('auth_user.role') === 'admin' ? 'bg-rose-100 text-rose-700' : 'bg-emerald-100 text-emerald-700' }} flex items-center justify-center text-xs font-extrabold shadow-sm">
+                            <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-user-shield' : 'fa-user-graduate' }}"></i>
+                        </span>
+                        <div class="text-left">
+                            <span class="block text-xs font-bold text-slate-800 leading-tight">
+                                {{ session('auth_user.name') }}
                             </span>
-                            <div class="text-left">
-                                <span class="block text-xs font-bold text-slate-800 leading-tight">
-                                    {{ session('auth_user.name') }}
-                                </span>
-                                <span class="block text-[10px] font-semibold uppercase tracking-wider {{ session('auth_user.role') === 'admin' ? 'text-rose-600' : 'text-emerald-600' }}">
-                                    Role: {{ session('auth_user.role') }}
-                                </span>
-                            </div>
-
-                            <a href="{{ route('logout') }}" class="ml-2 p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors" title="Logout">
-                                <i class="fa-solid fa-right-from-bracket"></i>
-                            </a>
+                            <span class="block text-[10px] font-semibold uppercase tracking-wider {{ session('auth_user.role') === 'admin' ? 'text-rose-600' : 'text-emerald-600' }}">
+                                Role: {{ session('auth_user.role') }}
+                            </span>
                         </div>
-                    @else
-                        <a href="{{ route('login') }}" class="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-semibold text-xs shadow-sm transition-all">
-                            <i class="fa-solid fa-right-to-bracket"></i>
-                            <span>Login Sistem</span>
+
+                        <a href="{{ route('logout') }}" class="ml-2 p-2 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors" title="Logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>
                         </a>
-                    @endif
+                    </div>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -155,10 +149,19 @@
                         <i class="fa-solid fa-xmark text-xl hidden" id="menu-icon-close"></i>
                     </button>
                 </div>
+                @else
+                <!-- Indikator saat Belum Login -->
+                <div class="flex items-center space-x-2">
+                    <span class="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">
+                        <i class="fa-solid fa-lock text-amber-600 mr-1.5"></i> Sistem Terproteksi (Wajib Login)
+                    </span>
+                </div>
+                @endif
 
             </div>
         </div>
 
+        @if(session()->has('auth_user'))
         <!-- Mobile Navigation Menu -->
         <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md px-4 pt-2 pb-4 space-y-1 shadow-lg">
             <a href="{{ route('dashboard') }}" 
@@ -188,14 +191,11 @@
             </a>
 
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between">
-                @if(session()->has('auth_user'))
-                    <span class="text-xs text-slate-600 font-medium">Masuk: <strong>{{ session('auth_user.name') }}</strong> ({{ session('auth_user.role') }})</span>
-                    <a href="{{ route('logout') }}" class="text-xs text-rose-600 font-bold hover:underline">Logout</a>
-                @else
-                    <a href="{{ route('login') }}" class="w-full text-center py-2 bg-brand-600 text-white rounded-lg font-bold text-xs">Login</a>
-                @endif
+                <span class="text-xs text-slate-600 font-medium">Masuk: <strong>{{ session('auth_user.name') }}</strong> ({{ session('auth_user.role') }})</span>
+                <a href="{{ route('logout') }}" class="text-xs text-rose-600 font-bold hover:underline">Logout</a>
             </div>
         </div>
+        @endif
     </header>
 
     <!-- Global Notification Alerts -->

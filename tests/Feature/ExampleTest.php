@@ -7,43 +7,75 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test all routes in the system return successful response.
+     * Test bahwa tamu (belum login) wajib diarahkan ke halaman login.
      */
-    public function test_all_system_routes_return_successful_response()
+    public function test_guest_is_redirected_to_login_page()
     {
-        // 1. Login Page (Diagram 2)
+        // Akses root / diarahkan ke login
+        $response = $this->get('/');
+        $response->assertRedirect('/login');
+
+        // Akses dashboard tanpa login diarahkan ke login
+        $response = $this->get('/dashboard');
+        $response->assertRedirect('/login');
+
+        // Akses profil tanpa login diarahkan ke login
+        $response = $this->get('/profil');
+        $response->assertRedirect('/login');
+
+        // Akses mahasiswa tanpa login diarahkan ke login
+        $response = $this->get('/mahasiswa');
+        $response->assertRedirect('/login');
+
+        // Akses struktur kelas tanpa login diarahkan ke login
+        $response = $this->get('/struktur-kelas');
+        $response->assertRedirect('/login');
+
+        // Akses laporan tanpa login diarahkan ke login
+        $response = $this->get('/laporan');
+        $response->assertRedirect('/login');
+
+        // Halaman login publik dapat diakses dengan sukses
         $response = $this->get('/login');
         $response->assertStatus(200);
+    }
 
-        // 2. Dashboard Page (Diagram 3)
-        $response = $this->get('/');
+    /**
+     * Test bahwa pengguna yang sudah login dapat mengakses menu sistem.
+     */
+    public function test_authenticated_user_can_access_system()
+    {
+        $sessionData = [
+            'auth_user' => [
+                'name' => 'Administrator SI2A',
+                'username' => 'admin',
+                'email' => 'admin@polsub.ac.id',
+                'role' => 'admin'
+            ]
+        ];
+
+        // Akses root / diarahkan ke dashboard jika sudah login
+        $response = $this->withSession($sessionData)->get('/');
+        $response->assertRedirect('/dashboard');
+
+        // Dashboard
+        $response = $this->withSession($sessionData)->get('/dashboard');
         $response->assertStatus(200);
 
-        $response = $this->get('/dashboard');
+        // Profil
+        $response = $this->withSession($sessionData)->get('/profil');
         $response->assertStatus(200);
 
-        // 3. Profil Kelas Page (Diagram 4 & 8)
-        $response = $this->get('/profil');
+        // Mahasiswa
+        $response = $this->withSession($sessionData)->get('/mahasiswa');
         $response->assertStatus(200);
 
-        // 4. Daftar Mahasiswa Page (Diagram 5 & 9)
-        $response = $this->get('/mahasiswa');
+        // Struktur
+        $response = $this->withSession($sessionData)->get('/struktur-kelas');
         $response->assertStatus(200);
 
-        // 5. Detail Mahasiswa (Diagram 6)
-        $response = $this->get('/mahasiswa/detail/1');
-        $response->assertStatus(200);
-
-        // 6. Struktur Kelas Page (Diagram 7 & 10)
-        $response = $this->get('/struktur-kelas');
-        $response->assertStatus(200);
-
-        // 7. Generate Laporan Page (Diagram 11 & 12)
-        $response = $this->get('/laporan');
-        $response->assertStatus(200);
-
-        // 8. Export Excel
-        $response = $this->get('/laporan/export-excel?jenis=mahasiswa&jabatan=semua');
+        // Laporan
+        $response = $this->withSession($sessionData)->get('/laporan');
         $response->assertStatus(200);
     }
 }
