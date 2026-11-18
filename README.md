@@ -1,12 +1,12 @@
 # 🎓 Sistem Informasi Struktur Kelas SI2A - Politeknik Negeri Subang
 
-Aplikasi web sistem informasi struktur kelas modern yang dibangun menggunakan framework **Laravel** dan **Tailwind CSS**. Sistem ini direvisi dan disesuaikan **100% mengikuti rancangan dokumen Activity Diagram** Mata Kuliah Pemrograman Website [PSI3310].
+Aplikasi web sistem informasi struktur kelas modern yang dibangun menggunakan framework **Laravel** dan **Tailwind CSS**. 
 
-Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (No-DB Architecture)** dengan penyimpanan berkas JSON (`storage/app/class_system_data.json`). Siapa pun yang meng-clone repository dari GitHub dapat langsung menjalankannya tanpa perlu menginstal atau mengkonfigurasi MySQL/database!
+Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (No-DB Architecture)** menggunakan file data JSON terstruktur (`storage/app/class_system_data.json`). Siapa pun yang meng-clone repository ini dari GitHub dapat langsung menjalankannya tanpa perlu menginstal atau mengkonfigurasi MySQL/database!
 
 ---
 
-## 👥 Profil Pengembang & Dokumen
+## 👥 Profil Pengembang & Informasi Proyek
 
 - **Mata Kuliah**: Pemrograman Website [PSI3310]
 - **Program Studi**: D-III Sistem Informasi
@@ -23,20 +23,19 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 
 ---
 
-## 📋 Pemetaan Fitur Sesuai Activity Diagram
+## 📋 Fitur dan Modul Aplikasi
 
-| No | Activity Diagram | Deskripsi & Implementasi Sistem | Rute / Halaman |
+| No | Modul Sistem | Deskripsi & Implementasi Sistem | Rute / Halaman |
 |---|---|---|---|
-| **1** | **Diagram Login** *(Hal 2)* | Mahasiswa/Admin membuka web SI2A -> Form Login. Validasi: jika kolom kosong muncul *"Kolom wajib diisi"*, jika salah muncul *"Data login tidak valid"*, jika valid diarahkan ke Dashboard. | `/login` |
-| **2** | **Diagram Dashboard** *(Hal 3)* | Mengambil data kelas & mahasiswa. Jika belum ada muncul *"Data belum tersedia"*. Jika ada, menghitung jumlah mahasiswa, pengurus, kelas, dan menampilkan **grafik komposisi gender** serta ringkasan profil. | `/` atau `/dashboard` |
-| **3** | **Diagram Lihat Profil Kelas** *(Hal 4)* | Menampilkan nama kelas, prodi, jurusan, institusi, angkatan, dosen wali, dan deskripsi. Jika kosong muncul *"Profil kelas belum tersedia"*. | `/profil` |
-| **4** | **Diagram Daftar Mahasiswa** *(Hal 5)* | Menampilkan tabel NIM, Nama, Kelas, Jabatan. Dilengkapi fitur **pencarian**. Jika kata kunci tidak cocok, muncul notifikasi *"Data mahasiswa tidak ditemukan"*. | `/mahasiswa` |
-| **5** | **Diagram Lihat Detail Mahasiswa** *(Hal 6)* | Menampilkan NIM, Nama, Kelas, Jabatan, Email, dan No HP mahasiswa terpilih. Terdapat tombol "Kembali" ke daftar mahasiswa. | `/mahasiswa/detail/{id}` |
-| **6** | **Diagram Struktur Kelas** *(Hal 7)* | Menampilkan bagan hierarki Dosen Wali, Ketua Kelas, Wakil, Sekretaris, Bendahara, dan Anggota. Posisi kosong berstatus *"Belum ditentukan"*. | `/struktur-kelas` |
-| **7** | **Diagram Kelola Profil Kelas** *(Hal 8)* | Khusus Admin: Menambah, mengubah, dan menghapus profil kelas dengan dialog konfirmasi serta pesan notifikasi keberhasilan. | `/profil` |
-| **8** | **Diagram Kelola Data Mahasiswa** *(Hal 9)* | Khusus Admin: Tambah, edit, dan hapus data mahasiswa dengan modal interaktif serta notifikasi *"Data berhasil disimpan"*. | `/mahasiswa` |
-| **9** | **Diagram Atur Jabatan Pengurus** *(Hal 10)* | Khusus Admin: Tombol "Atur Jabatan". Sistem mengecek: jika jabatan tunggal (Ketua, Wakil, Sekretaris, Bendahara) sudah dipegang orang lain, sistem menolak dengan pesan *"Pilih Jabatan Lain!"*. Jika belum, jabatan diperbarui. | `/struktur-kelas` |
-| **10** | **Diagram Generate Laporan** *(Hal 11-12)* | Khusus Admin: Pilihan jenis laporan (Data Mahasiswa / Profil Kelas) & filter jabatan. Pratinjau tabel, jika kosong muncul *"tidak ada data untuk dilaporkan"*. Dilengkapi 3 tombol: **Cetak**, **Export PDF**, dan **Export Excel (.csv)**. | `/laporan` |
+| **1** | **Autentikasi (Login)** | Form login untuk Mahasiswa & Admin. Dilengkapi validasi: jika input kosong muncul *"Kolom wajib diisi"*, jika kredensial salah muncul *"Data login tidak valid"*, dan jika berhasil diarahkan ke Dashboard. | `/login` |
+| **2** | **Dashboard Kelas** | Menampilkan ringkasan statistik kelas: jumlah mahasiswa, total pengurus kelas, jumlah kelas, serta **grafik persentase komposisi mahasiswa (Laki-laki & Perempuan)** dan ringkasan identitas kelas. | `/` atau `/dashboard` |
+| **3** | **Profil Kelas** | Menampilkan informasi Nama Kelas, Program Studi, Jurusan, Institusi, Angkatan, Dosen Wali, dan Deskripsi. Khusus Admin dapat mengelola (Tambah, Ubah, Hapus) data profil kelas. | `/profil` |
+| **4** | **Data Mahasiswa & Pencarian** | Menampilkan tabel lengkap NIM, Nama, Kelas, dan Jabatan. Dilengkapi fitur pencarian real-time (dengan notifikasi *"Data mahasiswa tidak ditemukan"* jika hasil pencarian nihil). | `/mahasiswa` |
+| **5** | **Detail Mahasiswa** | Menampilkan rincian data mahasiswa terpilih: NIM, Nama Lengkap, Kelas, Jabatan, Email, dan No HP, serta tombol kembali ke daftar. | `/mahasiswa/detail/{id}` |
+| **6** | **Struktur Organisasi Kelas** | Menampilkan bagan hierarkis visual: Dosen Wali, Ketua Kelas, Wakil Ketua, Sekretaris, Bendahara, dan Anggota Kelas. Posisi kosong berstatus *"Belum ditentukan"*. | `/struktur-kelas` |
+| **7** | **Manajemen Data Mahasiswa (Admin)** | Khusus Admin: Tambah, edit, dan hapus data mahasiswa melalui modal interaktif dengan pesan notifikasi *"Data berhasil disimpan"*. | `/mahasiswa` |
+| **8** | **Atur Jabatan Pengurus (Admin)** | Khusus Admin: Menetapkan jabatan pengurus. Sistem memiliki validasi pencegah konflik: jika jabatan tunggal (Ketua, Wakil, Sekretaris, Bendahara) sudah diisi, sistem menampilkan notifikasi *"Pilih Jabatan Lain!"*. | `/struktur-kelas` |
+| **9** | **Generate & Ekspor Laporan** | Khusus Admin: Pembuatan laporan dengan pilihan jenis laporan (Data Mahasiswa / Profil Kelas) & filter jabatan. Dilengkapi 3 tombol ekspor: **Cetak Dokumen**, **Export PDF**, dan **Export Excel (.csv)**. | `/laporan` |
 
 ---
 
@@ -45,7 +44,7 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 | Role | Username / Email / NIM | Password | Hak Akses |
 |---|---|---|---|
 | **Admin** | `admin` atau `admin@polsub.ac.id` | `admin123` | Akses penuh: Kelola Profil, Kelola Data Mahasiswa, Atur Jabatan, Generate Laporan |
-| **Mahasiswa** | `10112001` atau `mahasiswa@polsub.ac.id` | `12345678` | Lihat Dashboard, Profil Kelas, Daftar Mahasiswa + Cari + Detail, Struktur Kelas |
+| **Mahasiswa** | `10112001` atau `mahasiswa@polsub.ac.id` | `12345678` | Lihat Dashboard, Profil Kelas, Pencarian Mahasiswa, Detail Mahasiswa, Struktur Kelas |
 
 ---
 
@@ -69,23 +68,17 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 3. **Buka di browser**:
    Kunjungi `http://127.0.0.1:8000`.
 
-*(Catatan: Anda **TIDAK PERLU** menjalankan MySQL, XAMPP, atau `php artisan migrate` karena sistem berjalan pada arsitektur No-DB JSON Store).*
+*(Catatan: Anda **TIDAK PERLU** mengaktifkan MySQL, XAMPP, atau `php artisan migrate` karena sistem berjalan pada arsitektur No-DB).*
 
 ---
 
-## 📤 Cara Push Pembaruan ke GitHub
+## 📤 Cara Push ke GitHub
 
-Semua pembaruan telah di-commit ke Git lokal. Untuk mengirimkannya ke repositori GitHub:
+Jika repositori GitHub Anda baru dibuat dan perlu disinkronkan:
 
 ```bash
 cd "C:\Users\khaik\.gemini\antigravity\scratch\web-kelas"
 
-# Hubungkan ke repository GitHub Anda (jika belum):
-git remote add origin https://github.com/USERNAME_ANDA/NAMA_REPO_ANDA.git
-
-# Pastikan branch main:
-git branch -M main
-
-# Unggah perubahan:
-git push -u origin main
+# Push dengan opsi --force untuk menyinkronkan kode proyek ke GitHub:
+git push -u origin main --force
 ```

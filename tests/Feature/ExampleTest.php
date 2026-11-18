@@ -7,9 +7,9 @@ use Tests\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * Test all routes matching Activity Diagrams return successful response.
+     * Test all routes in the system return successful response.
      */
-    public function test_all_activity_diagram_routes_return_successful_response()
+    public function test_all_system_routes_return_successful_response()
     {
         // 1. Login Page (Diagram 2)
         $response = $this->get('/login');

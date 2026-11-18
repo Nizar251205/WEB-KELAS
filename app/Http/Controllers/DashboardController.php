@@ -8,7 +8,7 @@ use App\Services\ClassDataService;
 class DashboardController extends Controller
 {
     /**
-     * Tampilkan Halaman Dashboard (Activity Diagram Page 3)
+     * Tampilkan Halaman Dashboard
      */
     public function index()
     {

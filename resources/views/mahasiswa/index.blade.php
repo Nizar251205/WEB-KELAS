@@ -12,7 +12,7 @@
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
                     Daftar Mahasiswa
                 </span>
-                <span class="text-xs text-slate-400">Activity Diagram #5, #6, & #9</span>
+                <span class="text-xs text-slate-400">Sistem Informasi SI2A</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                 Data Mahasiswa Kelas SI2A

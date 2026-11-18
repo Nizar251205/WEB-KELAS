@@ -8,7 +8,7 @@ use App\Services\ClassDataService;
 class LaporanController extends Controller
 {
     /**
-     * Tampilkan Halaman Generate Laporan & Pratinjau (Activity Diagram Page 11 & 12)
+     * Tampilkan Halaman Generate Laporan & Pratinjau
      */
     public function index(Request $request)
     {

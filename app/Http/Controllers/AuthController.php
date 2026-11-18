@@ -8,7 +8,7 @@ use App\Services\ClassDataService;
 class AuthController extends Controller
 {
     /**
-     * Tampilkan Halaman Login (Activity Diagram Page 2)
+     * Tampilkan Halaman Login
      */
     public function showLogin()
     {
@@ -26,7 +26,7 @@ class AuthController extends Controller
         $loginInput = trim($request->input('login_id', ''));
         $password = trim($request->input('password', ''));
 
-        // Cek apakah kolom terisi (Activity Diagram: "Kolom terisi?")
+        // Cek apakah kolom terisi
         if (empty($loginInput) || empty($password)) {
             return back()->withInput()->with('error', 'Kolom wajib diisi! Silakan masukkan username/email/NIM dan password.');
         }
@@ -76,7 +76,7 @@ class AuthController extends Controller
             }
         }
 
-        // Data tidak valid (Activity Diagram: "Tampilkan pesan kesalahan")
+        // Data tidak valid
         return back()->withInput()->with('error', 'Data login tidak valid! Username, NIM, email, atau password yang Anda masukkan salah.');
     }
 

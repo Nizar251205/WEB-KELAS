@@ -8,7 +8,7 @@ use App\Services\ClassDataService;
 class MahasiswaController extends Controller
 {
     /**
-     * Tampilkan Daftar Mahasiswa & Pencarian (Activity Diagram Page 5)
+     * Tampilkan Daftar Mahasiswa & Pencarian
      */
     public function index(Request $request)
     {
@@ -30,7 +30,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Tampilkan Detail Mahasiswa (Activity Diagram Page 6)
+     * Tampilkan Detail Mahasiswa
      */
     public function show($id)
     {
@@ -47,7 +47,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Tambah Data Mahasiswa (Activity Diagram Page 9 - Admin Kelola Data)
+     * Tambah Data Mahasiswa (Admin)
      */
     public function store(Request $request)
     {
@@ -84,7 +84,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Perbarui Data Mahasiswa (Activity Diagram Page 9 - Admin Edit)
+     * Perbarui Data Mahasiswa (Admin)
      */
     public function update(Request $request, $id)
     {
@@ -118,7 +118,7 @@ class MahasiswaController extends Controller
     }
 
     /**
-     * Hapus Data Mahasiswa (Activity Diagram Page 9 - Admin Hapus)
+     * Hapus Data Mahasiswa (Admin)
      */
     public function destroy($id)
     {

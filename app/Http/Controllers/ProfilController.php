@@ -8,7 +8,7 @@ use App\Services\ClassDataService;
 class ProfilController extends Controller
 {
     /**
-     * Tampilkan Halaman Profil Kelas (Activity Diagram Page 4)
+     * Tampilkan Halaman Profil Kelas
      */
     public function index()
     {
@@ -23,11 +23,11 @@ class ProfilController extends Controller
     }
 
     /**
-     * Tambah / Ubah Profil Kelas (Activity Diagram Page 8 - Kelola Profil Kelas)
+     * Tambah / Ubah Profil Kelas (Admin)
      */
     public function save(Request $request)
     {
-        // Validasi data (Activity Diagram: "Data valid?")
+        // Validasi data input
         $request->validate([
             'nama_kelas' => 'required|string|max:50',
             'prodi' => 'required|string|max:100',
@@ -62,7 +62,7 @@ class ProfilController extends Controller
     }
 
     /**
-     * Hapus Data Profil Kelas (Activity Diagram Page 8 - Hapus Profil Kelas)
+     * Hapus Data Profil Kelas (Admin)
      */
     public function destroy()
     {

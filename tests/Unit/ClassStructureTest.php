@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Services\ClassDataService;
 
-class ActivityDiagramLogicTest extends TestCase
+class ClassStructureTest extends TestCase
 {
     public function test_assign_role_conflict_shows_pilih_jabatan_lain()
     {

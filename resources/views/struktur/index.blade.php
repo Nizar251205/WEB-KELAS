@@ -12,7 +12,7 @@
                 <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-100 text-brand-800">
                     Struktur Organisasi
                 </span>
-                <span class="text-xs text-slate-400">Activity Diagram #7 & #10</span>
+                <span class="text-xs text-slate-400">Sistem Informasi SI2A</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
                 Bagan Struktur Kelas SI2A
@@ -191,7 +191,7 @@
         <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-5">
             <div>
                 <h3 class="text-lg font-bold text-slate-900">Atur Jabatan Pengurus</h3>
-                <p class="text-xs text-slate-500">Activity Diagram #10: Validasi kepemilikan jabatan</p>
+                <p class="text-xs text-slate-500">Validasi kepemilikan jabatan organisasi kelas</p>
             </div>
             <button onclick="closeModal('modal-atur-jabatan')" class="text-slate-400 hover:text-slate-600">&times;</button>
         </div>
