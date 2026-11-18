@@ -201,7 +201,7 @@
             <!-- Sidebar Bottom: System Info & Logout -->
             <div class="p-4 border-t border-slate-800/80 bg-slate-950/60">
                 <div class="mb-3 px-2 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>TA 2026 / 2027</span>
+                    <span>Angkatan 2025</span>
                     <span class="inline-flex items-center text-brand-400 font-semibold">
                         <span class="w-1.5 h-1.5 rounded-full bg-brand-400 mr-1.5 animate-pulse"></span>
                         No-DB Mode
@@ -237,8 +237,9 @@
                 </div>
 
                 <div class="flex items-center space-x-3">
-                    <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-brand-50 text-brand-700 border border-brand-200">
-                        <i class="fa-solid fa-code mr-1.5 text-brand-600"></i> Pemrograman Website [PSI3310]
+                    <span class="hidden sm:inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-black {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} shadow-xs">
+                        <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-shield-halved' : 'fa-user-graduate' }} mr-1.5 {{ session('auth_user.role') === 'admin' ? 'text-rose-600' : 'text-brand-600' }}"></i>
+                        <span>{{ session('auth_user.role') === 'admin' ? 'Administrator' : 'Mahasiswa' }}</span>
                     </span>
                     <div class="w-9 h-9 rounded-xl {{ session('auth_user.role') === 'admin' ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-brand-50 text-brand-700 border border-brand-200' }} flex items-center justify-center text-xs font-black shadow-xs" title="{{ session('auth_user.name') }}">
                         <i class="fa-solid {{ session('auth_user.role') === 'admin' ? 'fa-user-shield' : 'fa-user-graduate' }}"></i>

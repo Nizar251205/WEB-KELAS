@@ -21,7 +21,7 @@ class ClassDataService
             'prodi' => 'D-III Sistem Informasi',
             'jurusan' => 'Jurusan Teknologi Informasi dan Komputer',
             'institusi' => 'Politeknik Negeri Subang',
-            'angkatan' => '2026',
+            'angkatan' => '2025',
             'mata_kuliah' => 'Pemrograman Website [PSI3310]',
             'dosen_wali' => 'Rahmat Irsyada, M.Pd. & Usep Abdul Rosid, M.Kom.',
             'deskripsi' => 'Kelas Sistem Informasi 2A (SI2A) merupakan wadah pembelajaran kolaboratif Program Studi D-III Sistem Informasi, Jurusan Teknologi Informasi dan Komputer di Politeknik Negeri Subang. Berfokus pada pengembangan rekayasa web, teknologi basis data, dan kepemimpinan organisasi digital.',

@@ -188,7 +188,7 @@
             <div class="grid grid-cols-2 gap-3">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Angkatan</label>
-                    <input type="text" name="angkatan" value="{{ old('angkatan', $profile['angkatan'] ?? '2026') }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-mono">
+                    <input type="text" name="angkatan" value="{{ old('angkatan', $profile['angkatan'] ?? '2025') }}" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 font-mono">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Mata Kuliah</label>

@@ -16,7 +16,7 @@ class ClassStructureTest extends TestCase
                 'prodi' => 'D-III Sistem Informasi',
                 'jurusan' => 'Jurusan Teknologi Informasi dan Komputer',
                 'institusi' => 'Politeknik Negeri Subang',
-                'angkatan' => '2026',
+                'angkatan' => '2025',
                 'mata_kuliah' => 'Pemrograman Website [PSI3310]',
                 'dosen_wali' => 'Rahmat Irsyada, M.Pd. & Usep Abdul Rosid, M.Kom.',
                 'deskripsi' => 'Pengujian unit logic struktur kelas SI2A POLSUB',

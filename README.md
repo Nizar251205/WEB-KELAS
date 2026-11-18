@@ -11,7 +11,7 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 - **Mata Kuliah**: Pemrograman Website [PSI3310]
 - **Program Studi**: D-III Sistem Informasi
 - **Jurusan**: Jurusan Teknologi Informasi dan Komputer
-- **Perguruan Tinggi**: Politeknik Negeri Subang (POLSUB) - 2026
+- **Perguruan Tinggi**: Politeknik Negeri Subang (POLSUB) - Angkatan 2025
 - **Dosen Pengampu**:
   1. Rahmat Irsyada, M.Pd.
   2. Usep Abdul Rosid, M.Kom.

@@ -15,7 +15,7 @@
             <div class="max-w-2xl">
                 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-bold mb-3 border border-white/15 text-brand-300">
                     <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    <span>Portal Resmi Kelas • {{ $profile['angkatan'] ?? '2026' }}</span>
+                    <span>Portal Resmi Kelas • {{ $profile['angkatan'] ?? '2025' }}</span>
                 </div>
                 <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-white">
                     Sistem Informasi <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-brand-400 to-indigo-300">2A</span>
@@ -88,7 +88,7 @@
         <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-xs glow-card flex items-center justify-between">
             <div>
                 <span class="text-[11px] font-black uppercase text-slate-400 tracking-wider">Tahun Angkatan</span>
-                <h3 class="text-3xl font-black text-slate-900 mt-1">{{ $profile['angkatan'] ?? '2026' }}</h3>
+                <h3 class="text-3xl font-black text-slate-900 mt-1">{{ $profile['angkatan'] ?? '2025' }}</h3>
                 <p class="text-[11px] text-slate-500 mt-0.5">Tingkat Akademik POLSUB</p>
             </div>
             <div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center text-xl shadow-xs">
