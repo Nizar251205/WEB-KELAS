@@ -1,0 +1,26 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+class ExampleTest extends TestCase
+{
+    /**
+     * A basic test example.
+     *
+     * @return void
+     */
+    public function test_the_application_returns_a_successful_response()
+    {
+        $response = $this->get('/');
+        $response->assertStatus(200);
+
+        $responseProfile = $this->get('/profile');
+        $responseProfile->assertStatus(200);
+
+        $responseJabatan = $this->get('/jabatan');
+        $responseJabatan->assertStatus(200);
+    }
+}
