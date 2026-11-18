@@ -198,15 +198,8 @@
                 </div>
             </div>
 
-            <!-- Sidebar Bottom: System Info & Logout -->
+            <!-- Sidebar Bottom: Logout -->
             <div class="p-4 border-t border-slate-800/80 bg-slate-950/60">
-                <div class="mb-3 px-2 flex items-center justify-between text-[11px] text-slate-400">
-                    <span>Angkatan 2025</span>
-                    <span class="inline-flex items-center text-brand-400 font-semibold">
-                        <span class="w-1.5 h-1.5 rounded-full bg-brand-400 mr-1.5 animate-pulse"></span>
-                        No-DB Mode
-                    </span>
-                </div>
                 <a href="{{ route('logout') }}" 
                    class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-rose-950/70 border border-slate-800 hover:border-rose-800/60 text-slate-300 hover:text-rose-300 text-xs font-bold transition-all flex items-center justify-center space-x-2 shadow-sm">
                     <i class="fa-solid fa-right-from-bracket"></i>

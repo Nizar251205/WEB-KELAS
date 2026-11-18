@@ -219,7 +219,7 @@
         </div>
         <div class="p-4 border-t border-slate-100 bg-slate-50/50 text-xs text-slate-500 flex justify-between items-center">
             <span>Total: <strong>{{ count($students) }}</strong> data mahasiswa</span>
-            <span class="font-mono text-[11px] text-slate-400">SI2A POLSUB • No-DB Store</span>
+            <span class="font-mono text-[11px] text-slate-400">Sistem Informasi 2A • POLSUB</span>
         </div>
     </div>
 
