@@ -85,7 +85,7 @@ class LaporanController extends Controller
                 fputcsv($handle, ['Jurusan', $p['jurusan'] ?? '-']);
                 fputcsv($handle, ['Institusi / Kampus', $p['institusi'] ?? '-']);
                 fputcsv($handle, ['Tahun Angkatan', $p['angkatan'] ?? '-']);
-                fputcsv($handle, ['Mata Kuliah', $p['mata_kuliah'] ?? '-']);
+                fputcsv($handle, ['Kelas', $p['mata_kuliah'] ?? '-']);
                 fputcsv($handle, ['Dosen Wali', $p['dosen_wali'] ?? '-']);
                 fputcsv($handle, ['Deskripsi', $p['deskripsi'] ?? '-']);
             } else {

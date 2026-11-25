@@ -8,7 +8,7 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 
 ## 👥 Profil Pengembang & Informasi Proyek
 
-- **Mata Kuliah**: Pemrograman Website [PSI3310]
+- **Kelas**: Pemrograman Website [PSI3310]
 - **Program Studi**: D-III Sistem Informasi
 - **Jurusan**: Jurusan Teknologi Informasi dan Komputer
 - **Perguruan Tinggi**: Politeknik Negeri Subang (POLSUB) - Angkatan 2025
@@ -39,11 +39,13 @@ Sistem ini dirancang secara khusus **berjalan tanpa dependensi database lokal (N
 
 ---
 
-## 🔑 Akun Demo untuk Pengujian Sistem
+## 🔑 Akun Admin
+
+Username admin adalah `nizar`. Atur password melalui variabel lingkungan `NIZAR_PASSWORD` di file `.env` lokal atau sebagai secret pada platform deployment. Jangan masukkan password ke Git.
 
 | Role | Username / Email / NIM | Password | Hak Akses |
 |---|---|---|---|
-| **Admin** | `admin` atau `admin@polsub.ac.id` | `admin123` | Akses penuh: Kelola Profil, Kelola Data Mahasiswa, Atur Jabatan, Generate Laporan |
+| **Admin** | `nizar` | Diatur melalui `NIZAR_PASSWORD` | Akses penuh: Kelola Profil, Kelola Data Mahasiswa, Atur Jabatan, Generate Laporan |
 | **Mahasiswa** | `10112001` atau `mahasiswa@polsub.ac.id` | `12345678` | Lihat Dashboard, Profil Kelas, Pencarian Mahasiswa, Detail Mahasiswa, Struktur Kelas |
 
 ---

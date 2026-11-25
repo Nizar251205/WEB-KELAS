@@ -31,30 +31,17 @@ class AuthController extends Controller
             return back()->withInput()->with('error', 'Kolom wajib diisi! Silakan masukkan username/email/NIM dan password.');
         }
 
-        // Akun Admin Default
-        if (($loginInput === 'admin' || $loginInput === 'admin@polsub.ac.id') && $password === 'admin123') {
+        // Akun utama
+        if ($loginInput === 'nizar' && $password !== '' && $password === config('services.nizar.password')) {
             session([
                 'auth_user' => [
-                    'name' => 'Administrator SI2A',
-                    'username' => 'admin',
-                    'email' => 'admin@polsub.ac.id',
+                    'name' => 'Muhammad Nizar Zulhaqy',
+                    'username' => 'nizar',
+                    'nim' => '10112049',
                     'role' => 'admin'
                 ]
             ]);
-            return redirect()->route('dashboard')->with('success', 'Selamat datang kembali, Administrator SI2A!');
-        }
-
-        // Akun Mahasiswa Default
-        if (($loginInput === 'mahasiswa' || $loginInput === 'mahasiswa@polsub.ac.id') && ($password === '12345678' || $password === 'mahasiswa123')) {
-            session([
-                'auth_user' => [
-                    'name' => 'Mahasiswa SI2A',
-                    'username' => 'mahasiswa',
-                    'email' => 'mahasiswa@polsub.ac.id',
-                    'role' => 'mahasiswa'
-                ]
-            ]);
-            return redirect()->route('dashboard')->with('success', 'Selamat datang di Sistem Informasi Kelas SI2A!');
+            return redirect()->route('dashboard')->with('success', 'Selamat datang, Muhammad Nizar Zulhaqy!');
         }
 
         // Cek login via NIM Mahasiswa

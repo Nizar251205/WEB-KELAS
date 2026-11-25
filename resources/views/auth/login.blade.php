@@ -52,17 +52,19 @@
 
             <div>
                 <label for="login_id" class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                    Username / Email / NIM
+                    Username
                 </label>
                 <div class="relative">
                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                         <i class="fa-solid fa-user-astronaut"></i>
                     </span>
-                    <input type="text" 
-                           id="login_id" 
-                           name="login_id" 
-                           value="{{ old('login_id') }}" 
-                           placeholder="Contoh: admin atau 10112001"
+                    <input type="text"
+                           id="login_id"
+                           name="login_id"
+                           value="{{ old('login_id') }}"
+                           placeholder="Contoh: nizar"
+                           autocomplete="username"
+                           autofocus
                            class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
                 </div>
             </div>
@@ -75,49 +77,43 @@
                     <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400">
                         <i class="fa-solid fa-key"></i>
                     </span>
-                    <input type="password" 
-                           id="password" 
-                           name="password" 
-                           placeholder="••••••••"
+                    <input type="text"
+                           id="password"
+                           name="password"
+                           placeholder="Masukkan password"
+                           autocomplete="current-password"
                            class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-950/70 border border-slate-700/80 text-white placeholder-slate-500 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-all">
                 </div>
             </div>
 
             <button type="submit" class="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-extrabold text-sm shadow-lg shadow-brand-500/30 transition-all flex items-center justify-center space-x-2 transform hover:-translate-y-0.5">
                 <i class="fa-solid fa-right-to-bracket"></i>
-                <span>Masuk ke Sistem</span>
+                <span>Login</span>
             </button>
         </form>
-
-        <!-- Quick Demo Credentials -->
-        <div class="mt-8 pt-6 border-t border-slate-800/80 relative">
-            <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest block text-center mb-3">
-                Klik Cepat untuk Demo Pengujian:
-            </span>
-            <div class="grid grid-cols-2 gap-2 text-xs">
-                <button type="button" 
-                        onclick="fillLogin('admin', 'admin123')"
-                        class="p-2.5 rounded-xl border border-rose-500/30 bg-rose-950/40 hover:bg-rose-900/50 text-rose-200 text-left transition flex flex-col justify-between">
-                    <span class="font-bold flex items-center text-xs"><i class="fa-solid fa-shield-halved mr-1.5 text-rose-400"></i> Admin</span>
-                    <span class="text-[11px] text-rose-300 font-mono mt-1">admin / admin123</span>
-                </button>
-                <button type="button" 
-                        onclick="fillLogin('10112001', '12345678')"
-                        class="p-2.5 rounded-xl border border-emerald-500/30 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-200 text-left transition flex flex-col justify-between">
-                    <span class="font-bold flex items-center text-xs"><i class="fa-solid fa-user-graduate mr-1.5 text-emerald-400"></i> Mahasiswa</span>
-                    <span class="text-[11px] text-emerald-300 font-mono mt-1">10112001 / 12345678</span>
-                </button>
-            </div>
-        </div>
 
     </div>
 
 </div>
 
 <script>
-    function fillLogin(u, p) {
-        document.getElementById('login_id').value = u;
-        document.getElementById('password').value = p;
-    }
+    const loginId = document.getElementById('login_id');
+    const password = document.getElementById('password');
+    const loginForm = loginId.closest('form');
+
+    loginId.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            password.focus();
+        }
+    });
+
+    password.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            loginForm.requestSubmit();
+        }
+    });
 </script>
+
 @endsection

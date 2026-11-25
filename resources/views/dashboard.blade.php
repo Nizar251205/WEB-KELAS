@@ -37,7 +37,7 @@
 
             <!-- Quick Info Badge in Banner -->
             <div class="w-full md:w-auto flex flex-col items-start md:items-end bg-white/5 backdrop-blur-md border border-white/10 p-4 sm:p-5 rounded-2xl min-w-0 sm:min-w-[220px]">
-                <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Mata Kuliah</span>
+                <span class="text-[10px] text-brand-300 uppercase tracking-widest font-black">Kelas</span>
                 <span class="text-sm sm:text-base font-bold text-white mt-0.5">{{ $profile['mata_kuliah'] ?? 'Pemrograman Website' }}</span>
                 <div class="mt-2.5 pt-2.5 border-t border-white/10 w-full flex items-center justify-between text-xs text-slate-300">
                     <span>Pengembang</span>

@@ -47,9 +47,9 @@ class ExampleTest extends TestCase
     {
         $sessionData = [
             'auth_user' => [
-                'name' => 'Administrator SI2A',
-                'username' => 'admin',
-                'email' => 'admin@polsub.ac.id',
+                'name' => 'Muhammad Nizar Zulhaqy',
+                'username' => 'nizar',
+                'nim' => '10112049',
                 'role' => 'admin'
             ]
         ];
@@ -77,5 +77,18 @@ class ExampleTest extends TestCase
         // Laporan
         $response = $this->withSession($sessionData)->get('/laporan');
         $response->assertStatus(200);
+    }
+
+    public function test_nizar_can_login_with_configured_credentials()
+    {
+        config(['services.nizar.password' => 'test-secret']);
+
+        $response = $this->post('/login', [
+            'login_id' => 'nizar',
+            'password' => 'test-secret',
+        ]);
+
+        $response->assertRedirect('/dashboard');
+        $response->assertSessionHas('auth_user.username', 'nizar');
     }
 }

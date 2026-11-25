@@ -90,7 +90,7 @@
         <h2 class="text-xl font-black uppercase tracking-wider text-slate-900">POLITEKNIK NEGERI SUBANG</h2>
         <h3 class="text-sm font-bold uppercase tracking-wide text-slate-800">JURUSAN TEKNOLOGI INFORMASI DAN KOMPUTER</h3>
         <p class="text-xs text-slate-600 mt-0.5">Program Studi D-III Sistem Informasi • Kelas Sistem Informasi 2A</p>
-        <p class="text-xs text-slate-600">Mata Kuliah Pemrograman Website [PSI3310] • Kelompok 4</p>
+        <p class="text-xs text-slate-600">Kelas Pemrograman Website [PSI3310] • Kelompok 4</p>
         <p class="text-xs font-bold italic mt-2 uppercase border-t border-slate-300 pt-1">
             {{ $jenisLaporan === 'profil' ? 'Dokumen Profil Kelas' : 'Laporan Daftar Mahasiswa & Struktur Kepengurusan' }}
         </p>
